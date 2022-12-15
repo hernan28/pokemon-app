@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import DetailsButton from '../DetailsButton';
+import DetailsButton from "../DetailsButton";
 
-    export default {
-  title: 'Buttons/DetailsButton',
+export default {
+  title: "Buttons/DetailsButton",
   component: DetailsButton,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 };
 

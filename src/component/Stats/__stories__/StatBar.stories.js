@@ -21,3 +21,5 @@ export const BarWithLessThan40Per = () => <DefaultBar value={51} />;
 export const BarWithLessThan60Per = () => <DefaultBar value={100} />;
 export const BarWithLessThan80Per = () => <DefaultBar value={200} />;
 export const BarWithLessThan100Per = () => <DefaultBar value={255} />;
+
+

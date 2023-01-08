@@ -31,7 +31,7 @@ const PokemonStats = ({ statsList }) => (
     cellPadding="3px"
   >
     {statsList.map((stat) => (
-      <Row statName={stat.name} statValue={stat.value} />
+      <Row key={stat.name} statName={stat.name} statValue={stat.value} />
     ))}
   </table>
 );

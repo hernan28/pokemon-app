@@ -1,6 +1,28 @@
 import DetailsButton from "./component/buttons/DetailsButton";
 import PokemonStats from "./component/Stats/PokemonStats";
+import TypeBar from "./component/TypeBar";
 import useFetch from "react-fetch-hook";
+
+const testTypeList = [
+  { name: "normal" },
+  { name: "fire" },
+  { name: "water" },
+  { name: "electric" },
+  { name: "grass" },
+  { name: "ice" },
+  { name: "fighting" },
+  { name: "poison" },
+  { name: "ground" },
+  { name: "flying" },
+  { name: "psychic" },
+  { name: "bug" },
+  { name: "rock" },
+  { name: "ghost" },
+  { name: "dragon" },
+  { name: "dark" },
+  { name: "steel" },
+  { name: "fairy" },
+];
 
 const testStatsList = [
   { name: "Hp", value: 45 },
@@ -23,11 +45,9 @@ function App() {
       }}
     >
       {/* Container for left navigation button bar, borderCss just for testing purposes */}
-      <div style={{ backgroundColor: "white", borderRight: "1px solid black" }}>
+      <div style={{ backgroundColor: "white" }}>
         {/* This buttons are just for test, change when left navigation bar is done */}
-        <DetailsButton />
-        <DetailsButton />
-        <DetailsButton />
+        <TypeBar typeList={testTypeList} />
       </div>
       {/* Container for pokemon rows */}
       <div style={{ backgroundColor: "white" }}>

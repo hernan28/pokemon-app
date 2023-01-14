@@ -1,9 +1,10 @@
 import React from "react";
 import pokemonColors from "../../consts/pokemonColors";
 
-const TypeButton = ({ typeName }) => {
+const TypeButton = ({ typeName, onClick }) => {
   return (
     <button
+      onClick={onClick}
       style={{
         borderRadius: 5,
         backgroundColor: "#f8f7f7",

@@ -1,7 +1,7 @@
 import React from "react";
 import TypeButton from "./buttons/TypeButton";
 
-const TypeBar = ({ typeList }) => (
+const TypeBar = ({ typeList, action }) => (
   <div
     style={{
       backgroundColor: "white",
@@ -10,10 +10,15 @@ const TypeBar = ({ typeList }) => (
       paddingBottom: 10,
     }}
   >
-    <TypeButton typeName="all" />
-    {typeList.map((type) => (
-      <TypeButton key={type.name} typeName={type.name} />
-    ))}
+    <TypeButton typeName="all" onClick={() => action(null)} />
+    {typeList &&
+      typeList.map((type) => (
+        <TypeButton
+          key={type.name}
+          typeName={type.name}
+          onClick={() => action(type.url)}
+        />
+      ))}
   </div>
 );
 export default TypeBar;

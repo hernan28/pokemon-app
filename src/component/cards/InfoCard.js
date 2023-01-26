@@ -1,6 +1,6 @@
 import React from "react";
 
-const InfoCard = () => {
+const InfoCard = ({ pokemonData }) => {
   return (
     <div
       style={{
@@ -36,7 +36,6 @@ const InfoCard = () => {
             borderRadius: 100,
           }}
         >
-          {" "}
           <div
             style={{
               display: "flex",
@@ -44,7 +43,7 @@ const InfoCard = () => {
               margin: "15%",
             }}
           >
-            text
+            {pokemonData.height}
           </div>
         </div>
         <div
@@ -60,7 +59,6 @@ const InfoCard = () => {
             borderRadius: 100,
           }}
         >
-          {" "}
           <div
             style={{
               display: "flex",
@@ -68,23 +66,55 @@ const InfoCard = () => {
               margin: "15%",
             }}
           >
-            text{" "}
+            {pokemonData.weight}
           </div>
         </div>
       </div>
-
       <div
         style={{
           display: "flex",
           height: "50%",
           width: "100%",
-          border: "1px solid black",
           fontFamily: "Rubik,sans-serif",
           fontWeight: "bold",
           fontSize: "13px",
           justifyContent: "center",
           position: "absolute",
           top: "0%",
+        }}
+      >
+        <img
+          src={pokemonData.sprites.front_default}
+          alt={pokemonData.name}
+        ></img>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          height: "10%",
+          width: "100%",
+          fontFamily: "Rubik,sans-serif",
+          fontWeight: "bold",
+          fontSize: "13px",
+          position: "absolute",
+          top: "50%",
+        }}
+      >
+        {pokemonData.name}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          height: "10%",
+          width: "100%",
+          fontFamily: "Rubik,sans-serif",
+          fontWeight: "bold",
+          fontSize: "13px",
+          position: "absolute",
+          top: "60%",
         }}
       ></div>
       <div
@@ -93,39 +123,6 @@ const InfoCard = () => {
           justifyContent: "center",
           height: "10%",
           width: "100%",
-          border: "1px solid black",
-          fontFamily: "Rubik,sans-serif",
-          fontWeight: "bold",
-          fontSize: "13px",
-          position: "absolute",
-          top: "50%",
-        }}
-      >
-        test
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          height: "10%",
-          width: "100%",
-          border: "1px solid black",
-          fontFamily: "Rubik,sans-serif",
-          fontWeight: "bold",
-          fontSize: "13px",
-          position: "absolute",
-          top: "60%",
-        }}
-      >
-        test
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          height: "10%",
-          width: "100%",
-          border: "1px solid black",
           fontFamily: "Rubik,sans-serif",
           fontWeight: "bold",
           fontSize: "13px",
@@ -133,7 +130,16 @@ const InfoCard = () => {
           top: "70%",
         }}
       >
-        test
+        {pokemonData.types.map(({ type: { name } }) => (
+          <span
+            style={{
+              marginRight: 5,
+              textTransform: "uppercase",
+            }}
+          >
+            {name}
+          </span>
+        ))}
       </div>
       <div
         style={{
@@ -141,7 +147,6 @@ const InfoCard = () => {
           justifyContent: "center",
           height: "10%",
           width: "100%",
-          border: "1px solid black",
           fontFamily: "Rubik,sans-serif",
           fontWeight: "bold",
           fontSize: "13px",
@@ -149,7 +154,15 @@ const InfoCard = () => {
           top: "80%",
         }}
       >
-        test
+        {pokemonData.abilities.map(({ ability: { name } }) => (
+          <span
+            style={{
+              marginRight: 5,
+            }}
+          >
+            {name}
+          </span>
+        ))}
       </div>
     </div>
   );

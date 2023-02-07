@@ -2,6 +2,7 @@ import React from "react";
 
 import InfoCard from "../InfoCard";
 const pokemonData = {
+  id: "1",
   name: "bulbasaur",
   height: 1,
   weight: 2,

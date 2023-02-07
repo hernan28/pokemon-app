@@ -1,17 +1,19 @@
 import React from "react";
-
+import pokemonColors from "../../consts/pokemonColors";
+import { titleCase } from "../../utils";
 const InfoCard = ({ pokemonData }) => {
   return (
     <div
       style={{
         height: 200,
-        width: 200,
-        border: "1px solid black",
+        width: 250,
+        border: "1px solid white",
         borderRadius: 10,
         fontFamily: "Rubik,sans-serif",
         fontWeight: "bold",
         fontSize: "13px",
         position: "relative",
+        backgroundColor: "white",
       }}
     >
       <div
@@ -27,13 +29,17 @@ const InfoCard = ({ pokemonData }) => {
         <div
           style={{
             display: "flex",
-            height: "100%",
+            height: "55px",
+            justifyContent: "center",
             position: "absolute",
-            width: "20%",
+            width: "55px",
             top: "-25%",
             left: "-5%",
-            border: "1px solid black",
+            border: "1px solid white",
             borderRadius: 100,
+            zIndex: 2,
+            backgroundColor: "white",
+            boxShadow: "10px 10px 60px #e9e8e7",
           }}
         >
           <div
@@ -43,20 +49,23 @@ const InfoCard = ({ pokemonData }) => {
               margin: "15%",
             }}
           >
-            {pokemonData.height}
+            {pokemonData.height}m
           </div>
         </div>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
-            height: "100%",
+            height: "55px",
             position: "absolute",
-            width: "20%",
+            width: "55px",
             top: "-25%",
             right: "-5%",
-            border: "1px solid black",
+            border: "1px solid white",
             borderRadius: 100,
+            zIndex: 2,
+            backgroundColor: "white",
+            boxShadow: "10px 10px 60px #e9e8e7",
           }}
         >
           <div
@@ -66,7 +75,7 @@ const InfoCard = ({ pokemonData }) => {
               margin: "15%",
             }}
           >
-            {pokemonData.weight}
+            {pokemonData.weight}kg
           </div>
         </div>
       </div>
@@ -77,16 +86,26 @@ const InfoCard = ({ pokemonData }) => {
           width: "100%",
           fontFamily: "Rubik,sans-serif",
           fontWeight: "bold",
-          fontSize: "13px",
+          color: "#E9E8E7",
+          fontSize: "80px",
           justifyContent: "center",
           position: "absolute",
           top: "0%",
+          zIndex: 1,
         }}
       >
-        <img
-          src={pokemonData.sprites.front_default}
-          alt={pokemonData.name}
-        ></img>
+        {`#${pokemonData.id.toString().padStart(3, "0")}`}
+        <div
+          style={{
+            zIndex: 2,
+            position: "absolute",
+          }}
+        >
+          <img
+            src={pokemonData.sprites.front_default}
+            alt={pokemonData.name}
+          ></img>
+        </div>
       </div>
 
       <div
@@ -95,14 +114,15 @@ const InfoCard = ({ pokemonData }) => {
           justifyContent: "center",
           height: "10%",
           width: "100%",
-          fontFamily: "Rubik,sans-serif",
+          fontFamily: "Rubik,sans-serif ",
+          color: "#66625c",
           fontWeight: "bold",
-          fontSize: "13px",
+          fontSize: "20px",
           position: "absolute",
           top: "50%",
         }}
       >
-        {pokemonData.name}
+        {titleCase(pokemonData.name)}
       </div>
       <div
         style={{
@@ -134,6 +154,7 @@ const InfoCard = ({ pokemonData }) => {
           <span
             style={{
               marginRight: 5,
+              color: pokemonColors[name],
               textTransform: "uppercase",
             }}
           >

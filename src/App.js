@@ -1,13 +1,20 @@
 import TypeBar from "./component/TypeBar";
 import useFetch from "react-fetch-hook";
 import PokemonDisplay from "./component/PokemonDisplay";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
   const [typeUrl, setTypeUrl] = useState(null);
+  const [runGetData, setRunGetData] = useState(false);
   const { data: { results: typeDataList } = {} } = useFetch(
-    "https://pokeapi.co/api/v2/type"
+    "https://pokeapi.co/api/v2/type",
+    { depends: [runGetData] }
   );
+
+  useEffect(() => {
+    if (runGetData) return;
+    setRunGetData(true);
+  }, [runGetData]);
   return (
     <div
       style={{

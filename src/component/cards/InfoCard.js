@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import pokemonColors from "../../consts/pokemonColors";
 import { titleCase } from "../../utils";
 const InfoCard = ({ pokemonData }) => {
@@ -50,7 +50,7 @@ const InfoCard = ({ pokemonData }) => {
               margin: "15%",
             }}
           >
-            {(pokemonData.height * 0.1).toFixed(1)}m
+            {(pokemonData?.height * 0.1).toFixed(1)}m
           </div>
         </div>
         <div
@@ -76,7 +76,7 @@ const InfoCard = ({ pokemonData }) => {
               margin: "15%",
             }}
           >
-            {(pokemonData.weight * 0.1).toFixed(1)}kg
+            {(pokemonData?.weight * 0.1).toFixed(1)}kg
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@ const InfoCard = ({ pokemonData }) => {
           zIndex: 1,
         }}
       >
-        {`#${pokemonData.id.toString().padStart(3, "0")}`}
+        {`#${pokemonData?.id?.toString().padStart(3, "0")}`}
         <div
           style={{
             zIndex: 2,
@@ -103,8 +103,8 @@ const InfoCard = ({ pokemonData }) => {
           }}
         >
           <img
-            src={pokemonData.sprites.front_default}
-            alt={pokemonData.name}
+            src={pokemonData?.sprites?.front_default}
+            alt={pokemonData?.name}
           ></img>
         </div>
       </div>
@@ -123,7 +123,7 @@ const InfoCard = ({ pokemonData }) => {
           top: "50%",
         }}
       >
-        {titleCase(pokemonData.name)}
+        {titleCase(pokemonData?.name)}
       </div>
       <div
         style={{
@@ -152,8 +152,8 @@ const InfoCard = ({ pokemonData }) => {
           alignItems: "center",
         }}
       >
-        {pokemonData.types.map(({ type: { name } }, index, originalArray) => (
-          <>
+        {pokemonData?.types?.map(({ type: { name } }, index, originalArray) => (
+          <Fragment key={name}>
             <span
               style={{
                 marginRight: 5,
@@ -174,7 +174,7 @@ const InfoCard = ({ pokemonData }) => {
                 }}
               ></div>
             )}
-          </>
+          </Fragment>
         ))}
       </div>
       <div
@@ -190,8 +190,9 @@ const InfoCard = ({ pokemonData }) => {
           top: "80%",
         }}
       >
-        {pokemonData.abilities.map(({ ability: { name } }) => (
+        {pokemonData?.abilities?.map(({ ability: { name } }) => (
           <span
+            key={name}
             style={{
               marginRight: 5,
             }}

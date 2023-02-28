@@ -14,6 +14,7 @@ const InfoCard = ({ pokemonData }) => {
         fontSize: "13px",
         position: "relative",
         backgroundColor: "white",
+        boxShadow: "10px 10px 60px #e9e8e7",
       }}
     >
       <div
@@ -49,7 +50,7 @@ const InfoCard = ({ pokemonData }) => {
               margin: "15%",
             }}
           >
-            {pokemonData.height}m
+            {(pokemonData.height * 0.1).toFixed(1)}m
           </div>
         </div>
         <div
@@ -75,7 +76,7 @@ const InfoCard = ({ pokemonData }) => {
               margin: "15%",
             }}
           >
-            {pokemonData.weight}kg
+            {(pokemonData.weight * 0.1).toFixed(1)}kg
           </div>
         </div>
       </div>
@@ -148,18 +149,32 @@ const InfoCard = ({ pokemonData }) => {
           fontSize: "13px",
           position: "absolute",
           top: "70%",
+          alignItems: "center",
         }}
       >
-        {pokemonData.types.map(({ type: { name } }) => (
-          <span
-            style={{
-              marginRight: 5,
-              color: pokemonColors[name],
-              textTransform: "uppercase",
-            }}
-          >
-            {name}
-          </span>
+        {pokemonData.types.map(({ type: { name } }, index, originalArray) => (
+          <>
+            <span
+              style={{
+                marginRight: 5,
+                color: pokemonColors[name],
+                textTransform: "uppercase",
+              }}
+            >
+              {name}
+            </span>
+            {index !== originalArray.length - 1 && (
+              <div
+                style={{
+                  backgroundColor: "#a39f99",
+                  borderRadius: "50%",
+                  height: "5px",
+                  marginRight: "5px",
+                  width: "5px",
+                }}
+              ></div>
+            )}
+          </>
         ))}
       </div>
       <div
@@ -181,7 +196,7 @@ const InfoCard = ({ pokemonData }) => {
               marginRight: 5,
             }}
           >
-            {name}
+            {titleCase(name)}
           </span>
         ))}
       </div>

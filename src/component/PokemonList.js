@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useFetch from "react-fetch-hook";
 import PokemonStats from "./Stats/PokemonStats";
 
 const PokemonItem = ({ pokemonItem }) => {
+  const [runGetData, setRunGetData] = useState(false);
   const { data: { stats = [], name, sprites } = {} } = useFetch(
-    pokemonItem.url
+    pokemonItem.url,
+    { depends: [runGetData] }
   );
+
+  useEffect(() => {
+    if (runGetData) return;
+    setRunGetData(true);
+  }, [runGetData]);
+
   const pokemonStats = stats.map((pokeStat) => ({
     name: pokeStat.stat.name,
     value: pokeStat.base_stat,

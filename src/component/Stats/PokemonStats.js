@@ -30,9 +30,11 @@ const PokemonStats = ({ statsList }) => (
     }}
     cellPadding="3px"
   >
-    {statsList.map((stat) => (
-      <Row key={stat.name} statName={stat.name} statValue={stat.value} />
-    ))}
+    <tbody>
+      {statsList.map((stat) => (
+        <Row key={stat.name} statName={stat.name} statValue={stat.value} />
+      ))}
+    </tbody>
   </table>
 );
 export default PokemonStats;

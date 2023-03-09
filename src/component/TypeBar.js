@@ -7,7 +7,6 @@ const TypeBar = ({ typeList, action }) => {
   return (
     <div
       style={{
-        backgroundColor: "white",
         paddingLeft: 10,
         paddingRight: 10,
         paddingBottom: 10,

@@ -1,5 +1,5 @@
 import React from "react";
-import TypeBar from "./TypeBar";
+import TypeBar from "../TypeBar";
 
 const TestTypeList = [
   { name: "normal" },

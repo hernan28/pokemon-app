@@ -1,6 +1,22 @@
 import React, { useState } from "react";
 import hexToRgba from "hex-to-rgba";
 import pokemonColors from "../../consts/pokemonColors";
+import styled from "styled-components";
+
+const TypeButtonStyle = styled.button`
+  border-radius: 5px;
+  background-color: ${(props) => props.getBackroundColor()};
+  color: ${(props) => (props.active ? "white" : props.mainColor)};
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  font-size: 13px;
+  padding: 10px;
+  margin-top: 10px;
+  letter-spacing: 0.5;
+  width: 100%;
+  transition: 0.5s;
+`;
 
 const TypeButton = ({ typeName, onClick, active }) => {
   const [isHover, setIsHover] = useState(false);
@@ -25,27 +41,16 @@ const TypeButton = ({ typeName, onClick, active }) => {
   };
 
   return (
-    <button
+    <TypeButtonStyle
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{
-        borderRadius: 5,
-        backgroundColor: getBackroundColor(),
-        color: active ? "white" : mainColor,
-        textTransform: "uppercase",
-        fontWeight: "bold",
-        border: "none",
-        fontSize: 13,
-        padding: "10px",
-        marginTop: "10px",
-        letterSpacing: 0.5,
-        width: "100%",
-        transition: "0.5s",
-      }}
+      getBackroundColor={getBackroundColor}
+      mainColor={mainColor}
+      active={active}
     >
       {typeName}
-    </button>
+    </TypeButtonStyle>
   );
 };
 

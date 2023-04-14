@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import pokemonColors from "../../consts/pokemonColors";
+import useFetch from "react-fetch-hook";
 import { titleCase } from "../../utils";
 const InfoCard = ({ pokemonData }) => {
+  const { data: pokemonGenus } = useFetch(pokemonData?.species?.url ?? "");
   return (
     <div
       style={{
@@ -136,8 +138,11 @@ const InfoCard = ({ pokemonData }) => {
           fontSize: "13px",
           position: "absolute",
           top: "60%",
+          color: "#66625c",
         }}
-      ></div>
+      >
+        {pokemonGenus?.genera[7].genus}
+      </div>
       <div
         style={{
           display: "flex",

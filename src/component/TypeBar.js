@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import TypeButton from "./buttons/TypeButton";
+import styled from "styled-components";
+
+const TypeBarStyle = styled.div`
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  top: 0;
+  position: sticky;
+  height: 100vmin;
+  overflow-y: auto;
+`;
 
 const TypeBar = ({ typeList, action }) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
 
   return (
-    <div
-      style={{
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 10,
-        top: 0,
-        position: "sticky",
-        height: "100vmin",
-        overflowY: "auto",
-      }}
-    >
+    <TypeBarStyle>
       <TypeButton
         typeName="all"
         active={activeButtonIndex === -1}
@@ -36,7 +37,7 @@ const TypeBar = ({ typeList, action }) => {
             }}
           />
         ))}
-    </div>
+    </TypeBarStyle>
   );
 };
 export default TypeBar;

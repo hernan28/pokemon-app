@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import useFetch from "react-fetch-hook";
+import InfoCard from "./cards/InfoCard";
 import PokemonStats from "./Stats/PokemonStats";
 
 const PokemonItem = ({ pokemonItem }) => {
   const [runGetData, setRunGetData] = useState(false);
-  const { data: { stats = [], name, sprites } = {} } = useFetch(
+  const { data: { stats = [], ...restPokemonData } = {} } = useFetch(
     pokemonItem.url,
     { depends: [runGetData] }
   );
@@ -26,17 +27,7 @@ const PokemonItem = ({ pokemonItem }) => {
         justifyContent: "space-evenly",
       }}
     >
-      {/* TODO: REMOVE NAME HERE JUST FOR TEST */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <img alt={name} src={sprites?.front_default} />
-        {name}
-      </div>
+      <InfoCard pokemonData={restPokemonData} />
       <PokemonStats statsList={pokemonStats} />
     </div>
   );

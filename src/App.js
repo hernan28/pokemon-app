@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const AppWrapper = styled.div`
   display: grid;
-  grid-template-columns: min-content 90%;
+  grid-template-columns: min-content 100%;
   height: 100vh;
 `;
 

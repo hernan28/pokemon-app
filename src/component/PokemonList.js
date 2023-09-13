@@ -5,6 +5,8 @@ import useFetch from "react-fetch-hook";
 import InfoCard from "./cards/InfoCard";
 import PokemonStats from "./Stats/PokemonStats";
 
+import DetailsButton from "./buttons/DetailsButton";
+
 const PokemonItem = ({ pokemonItem, pokeIndex }) => {
   const [runGetData, setRunGetData] = useState(false);
   const { data: { stats = [], ...restPokemonData } = {} } = useFetch(
@@ -35,6 +37,7 @@ const PokemonItem = ({ pokemonItem, pokeIndex }) => {
         <>
           <InfoCard pokemonData={restPokemonData} />
           <PokemonStats statsList={pokemonStats} />
+          <DetailsButton />
         </>
       ) : (
         <>
